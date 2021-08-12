@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { Container, CssBaseline, Typography } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 
 import theme from "./Theme";
 import Navigation from "./Navigation";
@@ -25,9 +25,6 @@ class App extends Component {
         <CssBaseline />
         <ParticleBackground />
         <Navigation />
-        <Container>
-          <Typography variant={"subtitle1"}>hi there</Typography>
-        </Container>
       </ThemeProvider>
     );
   }
