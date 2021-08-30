@@ -6,10 +6,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
 import { Tooltip } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
-import AppsIcon from "@material-ui/icons/Apps";
 import DescriptionIcon from "@material-ui/icons/Description";
 import IconButton from "@material-ui/core/IconButton";
 import { Link as RouterLink } from "react-router-dom";
+import AppMenu from "./AppMenu";
 
 const styles = (theme) => ({
   root: {
@@ -71,9 +71,7 @@ const ScrolledAppBar = withStyles(styles)(
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Misc. React Apps" aria-label="quick apps">
-                  <IconButton color="inherit" component={RouterLink} to="/apps">
-                    <AppsIcon />
-                  </IconButton>
+                  <AppMenu />
                 </Tooltip>
                 <Tooltip title="Resume" aria-label="resume">
                   <IconButton
