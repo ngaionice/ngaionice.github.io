@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Menu, MenuItem, Tooltip } from "@material-ui/core";
+import { Link, Menu, MenuItem, Tooltip } from "@material-ui/core";
 import AppsIcon from "@material-ui/icons/Apps";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -43,11 +43,7 @@ const AppMenu = () => {
           horizontal: "left",
         }}
       >
-        <MenuItem
-          onClick={() =>
-            window.location.replace("https://ionice.me/course-finder")
-          }
-        >
+        <MenuItem component={Link} href="https://ionice.me/course-finder">
           UofT Course Finder
         </MenuItem>
       </Menu>
