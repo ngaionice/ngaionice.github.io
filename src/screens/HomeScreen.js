@@ -1,52 +1,98 @@
-import React from "react";
-import { AppBar } from "../AppBar";
-import { Box, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-const HomeScreen = () => {
+import {
+  Box,
+  Stack,
+  Link,
+  Tooltip,
+  Typography,
+  IconButton,
+  Snackbar,
+} from "@mui/material";
+
+import AppsIcon from "@mui/icons-material/Apps";
+import CloseIcon from "@mui/icons-material/Close";
+import DescriptionIcon from "@mui/icons-material/Description";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
+const ColorText = ({ text }) => {
   return (
-    <div>
-      <AppBar title="Home" />
-      <Box justifyContent="center" display="flex" flexDirection="column">
-        <Box
-          mx={20}
-          mt={20}
-          height={"25vh"}
-          alignItems="flex-start"
-          justifyContent="center"
-          display="flex"
-          flexDirection="column"
-        >
-          <Typography variant="h5" display="inline" paragraph="true">
-            Hi there! I'm Julian.
-          </Typography>
-          <Typography variant="body1" display="inline" paragraph="true">
-            I'm currently studying Computer Science and Statistics at the
-            University of Toronto. I'm interested in designing UIs that place
-            equal emphasis on form and function, as well as manipulating data
-            and extracting insights from it.
-          </Typography>
-
-          <Typography variant="body1" display="inline" paragraph="true">
-            In my spare time, I enjoy developing tools that solves problems that
-            I run into, such as extracting data from games that I like, or
-            signing up for sessions at the gym automatically.
-          </Typography>
-        </Box>
-
-        <Box
-          mx={20}
-          height={"25vh"}
-          alignItems="center"
-          justifyContent="center"
-          display="flex"
-        >
-          <Typography variant="body1" display="inline" paragraph="true">
-            Site is a WIP. Check again later!
-          </Typography>
-        </Box>
-      </Box>
-    </div>
+    <Typography display="inline" color="primary" variant="inherit">
+      {text}
+    </Typography>
   );
 };
 
-export default HomeScreen;
+const HomeScreen = () => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleResumeClick = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
+  const closeSnackbar = (
+    <IconButton
+      size="small"
+      aria-label="close"
+      color="inherit"
+      onClick={handleSnackbarClose}
+    >
+      <CloseIcon fontSize="small" />
+    </IconButton>
+  );
+
+  return (
+    <>
+      <Box
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        display="flex"
+        minHeight="100vh"
+      >
+        <Stack spacing={1}>
+          <Typography variant="h3">hi, I'm Julian.</Typography>
+          <Typography variant="h5">
+            I like to make things with <ColorText text="Java" /> and{" "}
+            <ColorText text="React" />.
+          </Typography>
+          <Stack direction="row" justifyContent="center">
+            <Tooltip title="GitHub" arrow>
+              <IconButton component={Link} href="https://github.com/ngaionice">
+                <GitHubIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Things I've made" arrow>
+              <IconButton color="inherit" component={RouterLink} to="/things">
+                <AppsIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Resume" arrow>
+              <IconButton color="inherit" onClick={handleResumeClick}>
+                {/*<IconButton color="inherit" component={RouterLink} to="/resume">*/}
+                <DescriptionIcon />
+              </IconButton>
+            </Tooltip>
+          </Stack>
+        </Stack>
+      </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message="Resume not yet available, check back later!"
+        action={closeSnackbar}
+      />
+    </>
+  );
+};
+
+export { HomeScreen };

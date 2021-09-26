@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Trovia-E",
+    "note": "A JavaFX application used to extract data from hex values by extensive use of regex.",
+    "url": "https://github.com/ngaionice/trovia-e",
+    "tags": ["Java"]
+  },
+  {
+    "name": "Course Finder",
+    "note": "My first React app ever, built out of frustration from the scrolling issues in the official version.",
+    "url": "https://ionice.me/course-finder",
+    "tags": ["Javascript"]
+  },
+  {
+    "name": "Sport & Rec Registrant",
+    "note": "An automated tool to sign up for UofT Sport & Rec's gym sessions.",
+    "url": "https://github.com/ngaionice/sportandrec-registrant",
+    "tags": ["Java", "Selenium"]
+  }
+]

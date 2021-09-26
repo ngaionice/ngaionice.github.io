@@ -1,26 +1,60 @@
-import { createTheme } from "@material-ui/core/styles";
-import { orange, grey } from "@material-ui/core/colors";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { orange, grey } from "@mui/material/colors";
 
-const theme = createTheme({
-  palette: {
-    background: {
-      default: "#000000",
-    },
-    primary: {
-      main: grey[900],
-    },
-    secondary: {
-      main: orange[500],
-    },
-    typography: {
-      allVariants: {
-        color: "#FAFAFA",
+const theme = (dark) => {
+  return responsiveFontSizes(
+    createTheme({
+      palette: {
+        mode: dark ? "dark" : "light",
+        primary: {
+          main: orange[500],
+        },
+        secondary: {
+          main: dark ? grey[200] : grey[700],
+        },
       },
-    },
-    text: {
-      primary: "#000000",
-    },
-  },
-});
+      typography: {
+        fontFamily: ["Roboto", "Quicksand"].join(","),
+      },
+      components: {
+        MuiTypography: {
+          defaultProps: {
+            variantMapping: {
+              h3: "h1",
+            },
+          },
+          styleOverrides: {
+            h3: {
+              fontFamily: "Quicksand",
+              fontWeight: 300,
+            },
+            h5: {
+              fontFamily: "Roboto Condensed",
+              fontWeight: 500,
+            },
+          },
+        },
+      },
+    })
+  );
+};
 
-export default theme;
+const styles = {
+  flex: {
+    flex: 1,
+  },
+  appBarTransparent: {
+    boxShadow: 0,
+  },
+  appsGrid: {
+    paddingLeft: 4,
+    paddingRight: 4,
+    paddingTop: 4,
+    paddingBottom: 4,
+  },
+  appsChipStack: {
+    paddingLeft: 1,
+  },
+};
+
+export { theme, styles };

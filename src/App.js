@@ -1,45 +1,44 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import { CssBaseline } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 
-import theme from "./Theme";
+import { theme } from "./Theme";
 import Navigation from "./Navigation";
-import ParticleBackground from "./ParticleBackground";
+import { useLocation } from "react-router-dom";
+import { AppBar } from "./AppBar";
 
-const styles = (theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-});
+const App = () => {
+  const location = useLocation();
+  const [dark, setDark] = useState(false);
+  const [home, setHome] = useState(location.pathname === "/");
 
-class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider theme={theme}>
+  useEffect(() => {
+    const existingPreference = localStorage.getItem("darkMode");
+    if (existingPreference) {
+      existingPreference === "dark" ? setDark(true) : setDark(false);
+    } else {
+      setDark(true);
+      localStorage.setItem("darkMode", "dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", dark ? "dark" : "light");
+  }, [dark]);
+
+  useEffect(() => {
+    setHome(location.pathname === "/");
+  }, [location]);
+
+  return (
+    <StyledEngineProvider>
+      <ThemeProvider theme={theme(dark)}>
         <CssBaseline />
-        <ParticleBackground />
+        <AppBar home={home} darkControl={[dark, setDark]} />
         <Navigation />
-      </MuiThemeProvider>
-    );
-  }
-}
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
+};
 
-// const App = withStyles(styles)(({ classes }) => (
-//   <ThemeProvider theme={theme}>
-//     <div className={classes.root}>
-//       <Navigation />
-//     </div>
-//   </ThemeProvider>
-// ));
-
-// const App = withStyles(styles)(({ classes }) => (
-//
-// ));
-
-export default withStyles(styles)(App);
+export { App };

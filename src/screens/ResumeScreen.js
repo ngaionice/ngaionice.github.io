@@ -1,12 +1,7 @@
 import React from "react";
-import { AppBar } from "../AppBar";
 
 const ResumeScreen = () => {
-  return (
-    <div>
-      <AppBar title="Resume" />
-    </div>
-  );
+  return <div>Resume</div>;
 };
 
-export default ResumeScreen;
+export { ResumeScreen };

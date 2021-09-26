@@ -1,69 +1,63 @@
-import React, { Component, Fragment } from "react";
-import MuiAppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import { Tooltip } from "@material-ui/core";
-import HomeIcon from "@material-ui/icons/Home";
-import DescriptionIcon from "@material-ui/icons/Description";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  AppBar as MuiAppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  Tooltip,
+} from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import DescriptionIcon from "@mui/icons-material/Description";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { Link as RouterLink } from "react-router-dom";
-import AppMenu from "./AppMenu";
+import { styles } from "./Theme";
 
-const styles = (theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  homeButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  toolbarMargin: theme.mixins.toolbar,
-});
+const AppBar = ({ title, darkControl, home }) => {
+  const sv = styles;
+  const [dark, setDark] = darkControl;
 
-const AppBar = withStyles(styles)(
-  class extends Component {
-    render() {
-      const { classes, title } = this.props;
-      return (
-        <Fragment>
-          <MuiAppBar>
-            <Toolbar>
-              <Typography
-                variant="subtitle1"
-                color="inherit"
-                className={classes.flex}
-              >
-                {title}
-              </Typography>
-              <Tooltip title="Home" aria-label="home">
+  return (
+    <>
+      <MuiAppBar color="transparent" position="fixed" sx={sv.appBarTransparent}>
+        <Toolbar>
+          <Typography variant="body1" sx={sv.flex}>
+            {title}
+          </Typography>
+
+          {home ? null : (
+            <>
+              <Tooltip title="Home" aria-label="home" arrow>
                 <IconButton color="inherit" component={RouterLink} to="/">
                   <HomeIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Misc. React Apps" aria-label="quick apps">
-                <AppMenu />
-              </Tooltip>
               <Tooltip title="Resume" aria-label="resume">
-                <IconButton color="inherit" component={RouterLink} to="/resume">
+                <IconButton
+                  color="inherit"
+                  component={RouterLink}
+                  to="/resume"
+                  arrow
+                  disabled
+                >
                   <DescriptionIcon />
                 </IconButton>
               </Tooltip>
-            </Toolbar>
-          </MuiAppBar>
-          <div className={classes.toolbarMargin} />
-        </Fragment>
-      );
-    }
-  }
-);
+            </>
+          )}
 
-const AppBar2 = withStyles(styles)(({ classes, ...props }) => (
-  <div className={classes.root}>
-    <AppBar {...props} />
-  </div>
-));
-export { AppBar2 as AppBar };
+          <Tooltip title={"Toggle theme"} arrow>
+            <IconButton
+              color="inherit"
+              aria-label="toggle theme"
+              onClick={() => setDark(!dark)}
+            >
+              {dark ? <Brightness4Icon /> : <Brightness7Icon />}
+            </IconButton>
+          </Tooltip>
+        </Toolbar>
+      </MuiAppBar>
+    </>
+  );
+};
+
+export { AppBar };

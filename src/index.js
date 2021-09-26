@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-// import App from "./Test";
+import { App } from "./App";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <App
-    options={{
-      justify: "center",
-    }}
-  />,
+  <HashRouter>
+    <App />
+  </HashRouter>,
   document.getElementById("root")
 );
