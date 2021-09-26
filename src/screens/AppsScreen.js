@@ -1,7 +1,7 @@
 import {
   Chip,
+  Container,
   Divider,
-  Grid,
   Link,
   List,
   ListItem,
@@ -42,25 +42,13 @@ const AppsScreen = () => {
   return (
     <>
       <Toolbar />
-      <Grid
-        container
-        alignItems="center"
-        justifyContent="center"
-        rowSpacing={3}
-        sx={sv.appsGrid}
-      >
-        <Grid item xs={12} xl={9}>
+      <Container maxWidth="lg">
+        <Stack spacing={3} sx={sv.appsGrid}>
           <Typography variant="body1">
             This is a brief list of things that I've made; hopefully it will get
             longer over time.
           </Typography>
-        </Grid>
-
-        <Grid item xs={12} xl={9}>
           <Divider />
-        </Grid>
-
-        <Grid item xs={12} xl={9}>
           <List>
             {data.default.map((entry, index) => {
               return (
@@ -72,8 +60,8 @@ const AppsScreen = () => {
               );
             })}
           </List>
-        </Grid>
-      </Grid>
+        </Stack>
+      </Container>
     </>
   );
 };
