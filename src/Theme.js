@@ -49,8 +49,8 @@ const styles = {
   appsGrid: {
     paddingLeft: 4,
     paddingRight: 4,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: 6,
+    paddingBottom: 6,
   },
   appsChipStack: {
     paddingLeft: 1,

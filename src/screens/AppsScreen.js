@@ -42,7 +42,7 @@ const AppsScreen = () => {
   return (
     <>
       <Toolbar />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" disableGutters>
         <Stack spacing={3} sx={sv.appsGrid}>
           <Typography variant="body1">
             This is a brief list of things that I've made; hopefully it will get
