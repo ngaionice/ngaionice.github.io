@@ -4,7 +4,7 @@ import { HomeScreen } from "./screens/HomeScreen";
 import { AppsScreen } from "./screens/AppsScreen";
 import { ResumeScreen } from "./screens/ResumeScreen";
 
-const Navigation = () => {
+const Switchboard = () => {
   return (
     <Switch>
       <Route path="/" exact>
@@ -20,4 +20,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export { Switchboard };

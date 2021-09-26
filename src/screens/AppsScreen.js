@@ -51,8 +51,8 @@ const AppsScreen = () => {
       >
         <Grid item xs={12} xl={9}>
           <Typography variant="body1">
-            This is a brief list of things that I've made; it will ideally
-            increase in length over time.
+            This is a brief list of things that I've made; hopefully it will get
+            longer over time.
           </Typography>
         </Grid>
 

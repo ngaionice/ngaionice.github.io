@@ -10,7 +10,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { Link as RouterLink } from "react-router-dom";
-import { styles } from "./Theme";
+import { styles } from "../Theme";
 
 const AppBar = ({ title, darkControl, home }) => {
   const sv = styles;

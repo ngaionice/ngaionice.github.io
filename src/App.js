@@ -3,9 +3,9 @@ import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 
 import { theme } from "./Theme";
-import Navigation from "./Navigation";
+import { Switchboard } from "./Switchboard";
 import { useLocation } from "react-router-dom";
-import { AppBar } from "./AppBar";
+import { AppBar } from "./components/AppBar";
 
 const App = () => {
   const location = useLocation();
@@ -35,7 +35,7 @@ const App = () => {
       <ThemeProvider theme={theme(dark)}>
         <CssBaseline />
         <AppBar home={home} darkControl={[dark, setDark]} />
-        <Navigation />
+        <Switchboard />
       </ThemeProvider>
     </StyledEngineProvider>
   );
