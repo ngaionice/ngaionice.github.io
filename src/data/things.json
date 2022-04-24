@@ -1,4 +1,8 @@
 [
+  {"name": "sonar",
+  "note":  "A full-stack JS application for storing, tagging and searching images.",
+  "url":  "https://ionice-sonar.herokuapp.com",
+  "tags":  ["React.js", "Node.js", "AWS", "CockroachDB"]},
   {
     "name": "Trovia-E",
     "note": "A JavaFX application used to extract data from hex values by extensive use of regex.",
@@ -6,10 +10,10 @@
     "tags": ["Java"]
   },
   {
-    "name": "Course Finder",
-    "note": "My first React app ever, built out of frustration from the scrolling issues in the official version.",
-    "url": "https://ionice.me/course-finder",
-    "tags": ["Javascript"]
+    "name": "boreal",
+    "note": "A course finder for UofT's Faculty of Arts and Science, built out of frustration from numerous issues in the official timetable.",
+    "url": "https://ionice.me/boreal",
+    "tags": ["React.js"]
   },
   {
     "name": "Sport & Rec Registrant",
